@@ -7,16 +7,19 @@ Version: 1.0.0
 
 */
 
-add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_assets' );
+add_action( 'enqueue_block_editor_assets', 'casanova_enqueue_assets' );
 
-function my_plugin_enqueue_assets() {
+function casanova_enqueue_assets() {
   // Enqueue the plugin's stylesheet
-  wp_enqueue_style( 'my-plugin-video-background', plugin_dir_url( __FILE__ ) . 'video-background.css' );
+  wp_enqueue_style( 'casanova-video-background', plugin_dir_url( __FILE__ ) . 'casanova.css' );
+
+  // Enqueue the plugin's script
+  wp_enqueue_script( 'casanova-video-background-script', plugin_dir_url( __FILE__ ) . 'casanova.js', array( 'wp-blocks' ), '1.0.0', true );
 }
 
-add_action( 'wp_enqueue_scripts', 'my_plugin_enqueue_styles_for_frontend' );
+add_action( 'wp_enqueue_scripts', 'casanova_enqueue_styles_for_frontend' );
 
-function my_plugin_enqueue_styles_for_frontend() {
+function casanova_enqueue_styles_for_frontend() {
   // Enqueue the plugin's stylesheet for the frontend
-  wp_enqueue_style( 'my-plugin-video-background', plugin_dir_url( __FILE__ ) . 'video-background.css' );
+  wp_enqueue_style( 'casanova-video-background', plugin_dir_url( __FILE__ ) . 'casanova.css' );
 }
